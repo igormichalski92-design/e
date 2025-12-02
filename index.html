@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Video po kliknięciu</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial;
+    }
+
+    #videoContainer {
+        width: 1217px;
+        height: 910px;
+        overflow: hidden;
+        display: none; /* ukryte do czasu kliknięcia */
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #startButton {
+        padding: 15px 30px;
+        font-size: 24px;
+        cursor: pointer;
+        background: #111;
+        color: white;
+        border: 2px solid white;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    #startButton:hover {
+        background: white;
+        color: black;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Przycisk START -->
+<button id="startButton">Kliknij</button>
+
+<!-- Kontener z video -->
+<div id="videoContainer">
+    <video id="vid" loop>
+        <source src="https://campuchiavd.github.io/vdff.mp4" type="video/mp4">
+    </video>
+</div>
+
+<script>
+// Po kliknięciu:
+document.getElementById("startButton").addEventListener("click", () => {
+    const video = document.getElementById("vid");
+    const container = document.getElementById("videoContainer");
+
+    // Pokazujemy wideo
+    container.style.display = "block";
+
+    // Ukrywamy przycisk
+    document.getElementById("startButton").style.display = "none";
+
+    // Włączamy dźwięk + odtwarzanie
+    video.muted = false;
+    video.play();
+});
+</script>
+
+</body>
+</html>
+
